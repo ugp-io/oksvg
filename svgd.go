@@ -676,6 +676,7 @@ func ReadIconStream(stream io.Reader, errMode ...ErrorMode) (*SvgIcon, error) {
 		cursor.ErrorMode = errMode[0]
 	}
 	decoder := xml.NewDecoder(stream)
+	decoder.Strict = false
 	decoder.CharsetReader = charset.NewReaderLabel
 	for {
 		t, err := decoder.Token()
